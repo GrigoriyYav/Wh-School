@@ -8,11 +8,6 @@ import { HEROES } from '../mock-heroes';
   styleUrls: ['./heroes.component.scss']
 })
 export class HeroesComponent implements OnInit {
-  hero: IHero = {
-    id: 1,
-    name: 'Windstorm'
-  };
-
   selectedHero?: IHero;
 
   heroes = HEROES;
@@ -23,7 +18,7 @@ export class HeroesComponent implements OnInit {
   }
 
   onSelect(hero: IHero): void {
-    this.selectedHero = hero;
+    this.selectedHero = Object.assign({}, hero);
   }
 
 }
