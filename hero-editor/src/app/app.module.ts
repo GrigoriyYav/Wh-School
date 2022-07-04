@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 import { FormsModule } from '@angular/forms';
 import { PinkDirective } from './directives/pink.directive';
+import { CamelCasePipe } from './pipes/camel-case.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
-    PinkDirective
+    PinkDirective,
+    CamelCasePipe
   ],
   imports: [
     BrowserModule,
