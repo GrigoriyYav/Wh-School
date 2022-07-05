@@ -1,0 +1,49 @@
+.article-img-bottom-right{
+  width: 100%;
+  max-width: 762px;
+  margin: 40px auto 51px;
+  font-family: 'Segoe UI';
+  font-style: normal;
+
+  .article__major-part{
+    h2{
+      margin-top: 0px;
+    }
+    
+    p{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+  }
+
+  .article__major-part__text{
+    width: 100%;
+  }
+
+  .article__minor-part{
+    width: 100%;
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: auto 238px;
+
+    h3{
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 24px;
+    }
+
+    p{
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+      margin-right: 24px;
+    }
+  }
+
+  .article__minor-part__img{
+    width: 100%;
+    height: auto;
+    margin-top: 18px;
+  }
+}
