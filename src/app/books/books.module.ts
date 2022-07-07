@@ -5,6 +5,7 @@ import { ArticleImgTopLeftSingleHeaderComponent } from './articles/article-img-t
 import { ArticleImgTopMiddleComponent } from './articles/article-img-top-middle/article-img-top-middle.component';
 import { ArticleImgBottomRightComponent } from './articles/article-img-bottom-right/article-img-bottom-right.component';
 import { ArticleImgBottomRightSingleHeaderComponent } from './articles/article-img-bottom-right-single-header/article-img-bottom-right-single-header.component';
+import { BooksRoutingModule } from './books-routing.module';
 
 
 
@@ -17,14 +18,8 @@ import { ArticleImgBottomRightSingleHeaderComponent } from './articles/article-i
     ArticleImgBottomRightSingleHeaderComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    BooksRoutingModule
   ],
-  exports: [
-    ArticleImgTopLeftComponent,
-    ArticleImgTopLeftSingleHeaderComponent,
-    ArticleImgTopMiddleComponent,
-    ArticleImgBottomRightComponent,
-    ArticleImgBottomRightSingleHeaderComponent
-  ]
 })
 export class BooksModule { }
