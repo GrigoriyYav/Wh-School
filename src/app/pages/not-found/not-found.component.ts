@@ -6,7 +6,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./not-found.component.scss']
 })
 export class NotFoundComponent implements OnInit, OnDestroy {
-  pagination?: HTMLElement;
+  
   constructor() { }
 
   ngOnInit(): void {
