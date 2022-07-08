@@ -1,7 +1,3 @@
 <div class="paginationBar">
-  <button (click)="redirectTo('/book/1')" routerLink="/book/1" routerLinkActive="_active">1</button>
-  <button (click)="redirectTo('/book/2')" routerLink="/book/2" routerLinkActive="_active">2</button>
-  <button (click)="redirectTo('/book/3')" routerLink="/book/3" routerLinkActive="_active">3</button>
-  <button (click)="redirectTo('/book/4')" routerLink="/book/4" routerLinkActive="_active">4</button>
-  <button (click)="redirectTo('/book/5')" routerLink="/book/5" routerLinkActive="_active">5</button>
+  <button [routerLink]="'book/' + pageNum" *ngFor = 'let pageNum of pageList' routerLinkActive="_active">{{pageNum}}</button>
 </div>

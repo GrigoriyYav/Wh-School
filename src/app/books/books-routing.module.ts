@@ -6,8 +6,8 @@ import { ArticleImgTopLeftSingleHeaderComponent } from './articles/article-img-t
 import { ArticleImgTopLeftComponent } from './articles/article-img-top-left/article-img-top-left.component';
 import { ArticleImgTopMiddleComponent } from './articles/article-img-top-middle/article-img-top-middle.component';
 
-const routes: Routes = [
-  { path: '', redirectTo: '/book/1', pathMatch: 'full' },
+export const routes: Routes = [
+  { path: '', redirectTo: '1', pathMatch: 'full' },
   { path: '1', component: ArticleImgTopLeftComponent },
   { path: '2', component: ArticleImgTopLeftSingleHeaderComponent },
   { path: '3', component: ArticleImgTopMiddleComponent},

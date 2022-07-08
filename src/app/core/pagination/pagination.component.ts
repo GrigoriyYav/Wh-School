@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, Routes } from '@angular/router';
+import { routes as routesBooks } from 'src/app/books/books-routing.module';
 
 @Component({
   selector: 'app-pagination',
@@ -7,13 +8,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
+  pageList: string[] = [];
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-  }
-
-  redirectTo(route: string): void{
-    this.router.navigate([route]);
+    this.pageList = Array(routesBooks.length - 1).fill(0).map((el, i) => (i + 1).toString());
   }
 }
