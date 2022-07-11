@@ -10,6 +10,9 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatButtonModule } from '@angular/material/button';
 import { TablePageComponent } from './pages/table-page/table-page.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSortModule } from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,10 @@ import { TablePageComponent } from './pages/table-page/table-page.component';
     AppRoutingModule,
     BooksModule,
     BrowserAnimationsModule,
-    MatButtonModule
+    MatButtonModule,
+    MatTableModule,
+    MatIconModule,
+    MatSortModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
