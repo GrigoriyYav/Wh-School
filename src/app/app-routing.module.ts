@@ -9,12 +9,17 @@ const routes: Routes = [
     redirectTo: 'book',
     pathMatch: 'full',
   },
-  { path: 'book',
+  { 
+    path: 'book',
     loadChildren: () => import('./books/books.module').then((m) => m.BooksModule) 
   },
   { 
     path: 'table', 
     component: TablePageComponent
+  },
+  {
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   { 
     path: '**', 
