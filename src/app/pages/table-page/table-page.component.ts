@@ -9,6 +9,7 @@ interface PeriodicElement {
   name: string;
   weight: number;
   symbol: string;
+  extendedData?: PeriodicElementInfo[];
 }
 
 interface PeriodicElementInfo {
@@ -32,7 +33,7 @@ const extendedData: PeriodicElementInfo[]  = [
 ]
 
 
-const data: PeriodicElement[] = [
+const dataElements: PeriodicElement[] = [
   {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H', },
   {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He', },
   {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li', },
@@ -58,25 +59,31 @@ const data: PeriodicElement[] = [
   ],
 })
 export class TablePageComponent implements  OnInit, OnDestroy, AfterViewInit {
-  dataSource = new MatTableDataSource(data);
+  data = dataElements;
+
+  dataSource: MatTableDataSource<PeriodicElement>;
   columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
   columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand'];
   expandedElement!: PeriodicElement | null;
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'displayedInCell'];
-  extendedDataSource = new MatTableDataSource(extendedData);
+  //extendedDataSource :  MatTableDataSource<PeriodicElementInfo>
 
   @ViewChild('sorter1') sorter1 = new MatSort();
   @ViewChild('sorter2') sorter2 = new MatSort();
   //@ViewChild(MatSort, {static: false}) sorter1!: MatSort;
   //@ViewChild(MatSort, {static: false}) sorter2!: MatSort;
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sorter1;
-    this.extendedDataSource.sort = this.sorter2;
+  constructor() { 
+    this.data.forEach(el =>{el.extendedData = extendedData})
+    this.dataSource = new MatTableDataSource(this.data);
+    //this.extendedDataSource = new MatTableDataSource(this.data[0].extendedData);
   }
 
-  constructor() { }
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sorter1;
+    //this.extendedDataSource.sort = this.sorter2;
+  }
   
   ngOnInit(): void {
     if(document.getElementsByClassName('paginationBar').length > 0){
@@ -92,8 +99,8 @@ export class TablePageComponent implements  OnInit, OnDestroy, AfterViewInit {
 
   addData() {
     let randomData = new Array (0)
-      for (let n = 0; n <= data.length; n++) {
-        for (let i = 0; i < data.length; i++) {
+      for (let n = 0; n <= this.data.length; n++) {
+        for (let i = 0; i < this.data.length; i++) {
             randomData[i] = {
               position: Math.random()* (0 - 1000),
               name: Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5),
