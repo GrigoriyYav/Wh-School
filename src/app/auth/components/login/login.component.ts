@@ -22,13 +22,14 @@ export class LoginComponent implements OnInit {
   }
 
   getErrorMessage(validatorName: string) :string {
-    if(validatorName === 'required'){
-      return `Can't be empty`
+    switch (validatorName) {
+      case 'required':
+        return( "Can't be empty" );
+      case 'email':
+        return( `Please type email` );
+      default:
+        return( `Invalid enter` );
     }
-    if(validatorName === 'email'){
-      return `Please type email`
-    }
-    return `Invalid enter` ;
   }
 
   onSubmit() {

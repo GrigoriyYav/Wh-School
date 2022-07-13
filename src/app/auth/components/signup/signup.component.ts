@@ -22,16 +22,16 @@ export class SignupComponent implements OnInit {
   }
 
   getErrorMessage(validatorName:string) :string {
-    if(validatorName === 'required'){
-      return `You must enter a value`
+    switch (validatorName) {
+      case 'required':
+        return( "Can't be empty" );
+      case 'email':
+        return( `Please type email` );
+      case 'minlength':
+        return( `Min length 3` );
+      default:
+        return( `Invalid enter` );
     }
-    if(validatorName === 'email'){
-      return `Please type email`
-    }
-    if(validatorName === 'minlength'){
-      return `Min length 3`
-    }
-    return `Invalid enter` ;
   }
 
   onSubmit() {
