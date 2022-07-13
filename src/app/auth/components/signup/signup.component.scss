@@ -44,6 +44,8 @@
 }
 
 .password-container,.email-container,.name-container{
+  margin-top: 2px;
+
   & mat-label{
     color: white;
   }

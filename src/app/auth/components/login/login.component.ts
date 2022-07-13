@@ -16,19 +16,29 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
-      login: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required],
     });
   }
 
-  getErrorMessage() {
-    return 'Invalid user data';
+  getErrorMessage(validatorName: string) :string {
+    if(validatorName === 'required'){
+      return `Can't be empty`
+    }
+    if(validatorName === 'email'){
+      return `Please type email`
+    }
+    return `Invalid enter` ;
   }
 
   onSubmit() {
-    if (!this.loginForm.value) {
-      return;
-    }
+    //if (!this.loginForm.value) {
+    //  return;
+    //}
+    console.log(`name: ${this.loginForm.value.name}, email: ${this.loginForm.value.email}, password: ${this.loginForm.value.password}`);
+    this.loginForm.reset()
+    //or
+    //this.loginForm.pathValue
+    
   }
-
 }
