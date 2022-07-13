@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
     //if (!this.loginForm.value) {
     //  return;
     //}
-    console.log(`name: ${this.loginForm.value.name}, email: ${this.loginForm.value.email}, password: ${this.loginForm.value.password}`);
+    console.log(`email: ${this.loginForm.value.email}, password: ${this.loginForm.value.password}`);
     this.loginForm.reset()
     //or
     //this.loginForm.pathValue
