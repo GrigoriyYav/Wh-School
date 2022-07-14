@@ -14,6 +14,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
 import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
     MatTableModule,
     MatIconModule,
     MatSortModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
