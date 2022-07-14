@@ -13,6 +13,7 @@ import { TablePageComponent } from './pages/table-page/table-page.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSortModule } from '@angular/material/sort';
+import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { MatSortModule } from '@angular/material/sort';
     PaginationComponent,
     NotFoundComponent,
     TablePageComponent,
+    ChartsPageComponent,
   ],
   imports: [
     BrowserModule,
