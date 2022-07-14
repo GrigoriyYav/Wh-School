@@ -131,7 +131,12 @@ export class ChartsPageComponent implements OnInit, OnDestroy {
               align: 'top',
               color: 'black'
             }
+          },
+          elements: {
+            line: {
+                tension: 0.4 // disables bezier curves
           }
+      },
       },
 
     });
@@ -161,7 +166,8 @@ export class ChartsPageComponent implements OnInit, OnDestroy {
             borderColor: [
               'white',
             ],
-            borderWidth: 2
+            borderWidth: 2,
+            hoverOffset: 4,
         }]
       },
       options: {
@@ -175,6 +181,10 @@ export class ChartsPageComponent implements OnInit, OnDestroy {
         },
         scales: {
             y: {
+              display: false,
+              grid: {
+                display: false,
+              },
                 beginAtZero: true
             },
         
