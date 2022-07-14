@@ -1,0 +1,19 @@
+#charts{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  height: 90vh;
+  max-width: 100vw;
+}
+
+#line-char{
+  width: 60vw;
+}
+
+#charts :last-child{
+  width:30vw;
+}
+
+#storage-name{
+  margin: 30px 70px;
+}

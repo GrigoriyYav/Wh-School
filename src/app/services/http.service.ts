@@ -9,6 +9,7 @@ export class HttpService {
   constructor(private http: HttpClient) { }
 
   getChartsData(){
+    //return this.http.get('./assets/charts-data.json')
     return this.http.get('https://jsonproject-53629-default-rtdb.firebaseio.com/get-assembly.json')
   }
 }
