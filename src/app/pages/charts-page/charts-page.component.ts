@@ -27,7 +27,7 @@ export class ChartsPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.httpService.getChartsData().pipe(map ((value: any)=> value.data )).subscribe({
-      next: (value: any) => this.chartData = value,
+      next: (value: any) => this.chartData = value.reverse(),
       error: (err) => console.log(err),
       complete: () => this.showCharts()
    });
