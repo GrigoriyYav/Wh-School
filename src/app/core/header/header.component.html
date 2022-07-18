@@ -2,10 +2,20 @@
   <a class="header__logo" href="#">
     <img src="/assets/whschool-logo.svg" alt="WH School">
   </a>
-  <nav>
+  <nav >
     <button mat-stroked-button color="primary" routerLink="book/1">Books</button>
-    <button mat-stroked-button color="primary" routerLink="table">Table</button>
-    <button mat-stroked-button color="primary" routerLink="auth/login">Log In / Sign Up</button>
+    <button mat-stroked-button color="primary" routerLink="table">Table</button>    
     <button mat-stroked-button color="primary" routerLink="charts">Charts</button>
+    <div class="auth-container">
+      <ng-container *ngIf="authService.isLoggedIn; else logInPart">
+        <button mat-flat-button >{{ authService.userState }} </button>
+        <button mat-stroked-button color="primary" (click)="signOut()">Sign Out</button>
+      </ng-container>
+      <ng-template #logInPart>
+        <div class="auth-container_buttons">
+          <button mat-stroked-button color="primary" routerLink="auth/login" >Log In / Sign Up</button>
+        </div>
+      </ng-template>
+    </div>
   </nav>
 </header>

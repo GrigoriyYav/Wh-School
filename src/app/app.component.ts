@@ -8,3 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'wh-school';
 }
+
+localStorage.setItem('user', 'null');

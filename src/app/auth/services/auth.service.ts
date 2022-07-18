@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
-import { getAuth, updateProfile } from "firebase/auth";
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +43,7 @@ export class AuthService {
         });
       console.log('displayname setted', result.user.displayName);
       }
+      this.router.navigateByUrl('/book');
     } catch (error: any) {
       window.alert(error.message);
     }
@@ -52,6 +52,23 @@ export class AuthService {
   async SignOut() {
     await this.afAuth.signOut();
     localStorage.removeItem('user');
-    this.router.navigate(['login']);
+    this.router.navigateByUrl('auth/login');
+  }
+
+  get isLoggedIn():boolean {
+    if(localStorage.getItem('user') == 'null' || localStorage.getItem('user') == ''){
+      return false;
+    } else {
+      return true
+    }
+  }
+
+  get userState(){
+    if(this.userData.providerData[0].displayName == null){
+      return this.userData.email
+    } else {
+      return this.userData.displayName
+    }  
+
   }
 }

@@ -1,4 +1,4 @@
-
+/*
 export const firebaseConfig = {
   production: false,
   firebase:{
@@ -11,8 +11,8 @@ export const firebaseConfig = {
     measurementId: "G-EBT9GPRYTM"
   }
 };
+*/
 
-/*
 export const firebaseConfig = {
   production: false,
   firebase:{
@@ -25,4 +25,3 @@ export const firebaseConfig = {
     appId: "1:581614269949:web:18e34ca6e21f1b4da6d594"
   }
 };
-*/

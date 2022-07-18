@@ -15,3 +15,14 @@
 .header__logo img{
   margin: 16px 3vw 18px;
 }
+
+nav{
+  display: flex;
+  flex-direction: row;
+  & div{
+    margin-right: 40px;
+    & button{
+      margin-right: 0;
+    }
+  } 
+}
