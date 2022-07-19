@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from '../services/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ export class AuthGuard implements CanActivate {
   accessToken: string = "";
 
   constructor(
-    private router: Router,
+    public snackBar: MatSnackBar,
     private auth: AuthService
   ) { }
 
@@ -26,13 +27,20 @@ export class AuthGuard implements CanActivate {
       if(userTokens.includes(this.accessToken)){
         return true;
       } else {
-        window.alert(`No access to the page ${state.url.slice(1)}`);
+        this.openSnackBar(`No access to the page ${state.url.slice(1)}`,'OK')
+        //window.alert(`No access to the page ${state.url.slice(1)}`);
         return false;
       }       
     } else {
-      window.alert(`Plese login to get accses to the page ${state.url.slice(1)}`);
+      this.openSnackBar(`Plese login to get accses to the page ${state.url.slice(1)}`,'OK')
+      //window.alert(`Plese login to get accses to the page ${state.url.slice(1)}`);
       return false;
     }
   }
 
+  openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 3000,
+    });
+  }
 }

@@ -21,6 +21,6 @@ export class HttpService {
     return this.http.get<userTokens>('https://fir-auth-93a4f-default-rtdb.europe-west1.firebasedatabase.app/access-rights.json')
 
     //With access
-    return this.http.get<userTokens>('https://fir-auth-93a4f-default-rtdb.europe-west1.firebasedatabase.app/access-rights-full.json')
+    //return this.http.get<userTokens>('https://fir-auth-93a4f-default-rtdb.europe-west1.firebasedatabase.app/access-rights-full.json')
   }
 }
