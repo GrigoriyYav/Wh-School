@@ -16,7 +16,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularFireModule } from '@angular/fire/compat';
-import { firebaseConfig } from './environments/firebase';
+import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth'
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
@@ -39,7 +39,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
     MatIconModule,
     MatSortModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(firebaseConfig.firebase),
+    AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     AngularFirestoreModule,
   ],
