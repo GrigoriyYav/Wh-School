@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  /*
+  
     firebase:{
     apiKey: "AIzaSyCmfs0r_DoFr0OM18kg2BF9qDDOtHbzfXI",
     authDomain: "testangular-6e5a9.firebaseapp.com",
@@ -14,7 +14,7 @@ export const environment = {
     appId: "1:753897223995:web:713acf39f3d0d442d4291e",
     measurementId: "G-EBT9GPRYTM"
   }
-  */
+  /*
   firebase:{
     apiKey: "AIzaSyAdqfFKqoGt-WAwRAqxaeIz60o_-tmVu1Q",
     authDomain: "fir-auth-93a4f.firebaseapp.com",
@@ -24,6 +24,7 @@ export const environment = {
     messagingSenderId: "581614269949",
     appId: "1:581614269949:web:18e34ca6e21f1b4da6d594"
   }
+  */
 };
 
 /*

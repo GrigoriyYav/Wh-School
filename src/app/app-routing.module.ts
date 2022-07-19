@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TablePageComponent } from './pages/table-page/table-page.component';
 import { ChartsPageComponent } from './pages/charts-page/charts-page.component';
+import { AuthGuard } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -16,7 +17,9 @@ const routes: Routes = [
   },
   { 
     path: 'table', 
-    component: TablePageComponent
+    component: TablePageComponent,
+    canActivate: [AuthGuard],
+    data: {accessToken: "5525-5681-6140-8266"}
   },
   {
     path: 'auth',
@@ -24,7 +27,9 @@ const routes: Routes = [
   },
   { 
     path: 'charts', 
-    component: ChartsPageComponent
+    component: ChartsPageComponent,
+    canActivate: [AuthGuard],
+    data: {accessToken: "2720-4044-4713-0021"}
   },
   { 
     path: '**', 

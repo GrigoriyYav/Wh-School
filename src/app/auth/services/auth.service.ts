@@ -3,20 +3,26 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
 import { User } from '../interfaces/user';
+import { HttpService } from 'src/app/services/http.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  userData: any; // Save logged in user data
+  userData: any;
+  tokens: Array<string> = [];
 
-  constructor(public afs: AngularFirestore,  public afAuth: AngularFireAuth, public router: Router) {
+  constructor(public afs: AngularFirestore,  public afAuth: AngularFireAuth, public router: Router, private httpService: HttpService) {
     this.afAuth.authState.subscribe((user) => {
       if (user) {
+        this.httpService.getUserTokens().subscribe((value) => {
+          this.tokens = value.data
+        });
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       } else {
+        this.tokens = []
         localStorage.setItem('user', 'null');
         JSON.parse(localStorage.getItem('user')!);
       }
@@ -53,6 +59,10 @@ export class AuthService {
     await this.afAuth.signOut();
     localStorage.removeItem('user');
     this.router.navigateByUrl('auth/login');
+  }
+
+  get userTokens():Array<string>{
+   return this.tokens
   }
 
   get isLoggedIn():boolean {
