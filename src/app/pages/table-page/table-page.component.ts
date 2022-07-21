@@ -3,6 +3,7 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import { HttpService } from 'src/app/services/http.service';
 
 interface PeriodicElement {
   position: number;
@@ -60,6 +61,10 @@ const dataElements: PeriodicElement[] = [
 })
 export class TablePageComponent implements  OnInit, OnDestroy, AfterViewInit {
   data = dataElements;
+  wether : any;
+  crd: any;
+  latitude: any;
+  longitude: any;
 
   dataSource: MatTableDataSource<PeriodicElement>;
   columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
@@ -74,7 +79,7 @@ export class TablePageComponent implements  OnInit, OnDestroy, AfterViewInit {
   //@ViewChild(MatSort, {static: false}) sorter1!: MatSort;
   //@ViewChild(MatSort, {static: false}) sorter2!: MatSort;
 
-  constructor() { 
+  constructor(public httpService: HttpService) { 
     this.data.forEach(el =>{el.extendedData = extendedData})
     this.dataSource = new MatTableDataSource(this.data);
     //this.extendedDataSource = new MatTableDataSource(this.data[0].extendedData);
@@ -83,9 +88,26 @@ export class TablePageComponent implements  OnInit, OnDestroy, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.sort = this.sorter1;
     //this.extendedDataSource.sort = this.sorter2;
+    
   }
   
   ngOnInit(): void {
+    navigator.geolocation.getCurrentPosition((pos) => {
+      this.crd = pos.coords;
+      this.latitude = this.crd.latitude
+      this.longitude = this.crd.longitude
+      console.log('Ваше текущее местоположение:');
+      console.log(`Широта: ${this.crd.latitude}`);
+      console.log(`Долгота: ${this.crd.longitude}`);
+      console.log(`Плюс-минус ${this.crd.accuracy} метров.`);
+      this.httpService.getWether(this.latitude,this.longitude).subscribe({
+        next: (value) => this.wether = value,
+        error: (err) => console.log(err),
+        complete: () => console.log(this.wether)
+     });
+    })
+    
+
     if(document.getElementsByClassName('paginationBar').length > 0){
       Array.from(document.getElementsByClassName('paginationBar') as HTMLCollectionOf<HTMLElement>)[0].style.display = 'none';
     }    
